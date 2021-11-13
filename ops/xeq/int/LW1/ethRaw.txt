@@ -1,0 +1,4 @@
+Push LW1 15
+Push LW1 15
+Eq
+Pop

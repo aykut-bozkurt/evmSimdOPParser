@@ -71,6 +71,19 @@ data Op where
   Xror :: SimdByte -> Op
   Xpush :: SimdByte -> [Int] -> Op
   Add :: Op
+  Mul :: Op
+  Sub :: Op
+  Div :: Op
+  Lt :: Op
+  Gt :: Op
+  Eq :: Op
+  Iszero :: Op
+  And :: Op
+  Or :: Op
+  Xor :: Op
+  Not :: Op
+  Shl :: Op
+  Shr :: Op
   Push :: LaneWidth -> Int -> Op
   Pop :: Op
   
@@ -110,6 +123,20 @@ instance Serializable Op where
       vecToHex lw acc [] = acc
       vecToHex lw acc (x:xs) = vecToHex lw (acc ++ withLeftPad (lwToInt lw) (showHex x "")) xs 
   serialize Add = "01"
+  serialize Mul = "02"
+  serialize Sub = "03"
+  serialize Div = "04"
+  serialize Lt = "10"
+  serialize Gt = "11"
+  serialize Eq = "14"
+  serialize Iszero = "15"
+  serialize And = "16"
+  serialize Or = "17"
+  serialize Xor = "18"
+  serialize Not = "19"
+  serialize Shl = "21"
+  serialize Shr = "22"
+  serialize Pop = "50"
   serialize (Push lw x)
     | bytes == 1 = "60" ++ withLeftPad (lwToInt lw) (showHex x "") 
     | bytes == 2 = "61" ++ withLeftPad (lwToInt lw) (showHex x "") 
@@ -118,17 +145,15 @@ instance Serializable Op where
     | bytes == 16 = "6f" ++ withLeftPad (lwToInt lw) (showHex x "") 
     where
       bytes = lwToInt lw
-  serialize Pop = "50"
       
-      
-      
+
 main = do 
-    [rawRepeat, simdRepeat] <- getArgs
-    withFile "ethSimd.txt" ReadMode (\handle -> do  
+    [rawRepeat, rawPath, simdRepeat, simdPath] <- getArgs
+    withFile simdPath ReadMode (\handle -> do  
         contents <- hGetContents handle 
         let ops = map (serialize . (read :: String -> Op)) $ lines contents    
         mapM_ putStr (concat $ replicate (read simdRepeat :: Int) ops)) 
-    withFile "ethRaw.txt" ReadMode (\handle -> do  
+    withFile rawPath ReadMode (\handle -> do  
         contents <- hGetContents handle 
         let ops = map (serialize . (read :: String -> Op)) $ lines contents    
         mapM_ putStr (concat $ replicate (read rawRepeat :: Int) ops))  

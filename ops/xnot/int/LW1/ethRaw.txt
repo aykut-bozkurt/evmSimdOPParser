@@ -1,0 +1,3 @@
+Push LW1 15
+Not
+Pop

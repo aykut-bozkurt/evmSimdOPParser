@@ -1,0 +1,3 @@
+Push LW8 15
+Iszero
+Pop

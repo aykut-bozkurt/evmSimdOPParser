@@ -1,0 +1,4 @@
+Push LW2 15
+Push LW2 15
+Xor
+Pop

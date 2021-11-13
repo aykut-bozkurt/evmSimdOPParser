@@ -1,0 +1,3 @@
+Xpush (SimdByte F LW4 LC2) [1,2]
+Xiszero (SimdByte F LW4 LC2)
+Pop

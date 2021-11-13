@@ -1,0 +1,4 @@
+Xpush (SimdByte I LW8 LC2) [1,2]
+Xpush (SimdByte I LW8 LC2) [1,2]
+Xdiv (SimdByte I LW8 LC2)
+Pop
