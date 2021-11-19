@@ -1,0 +1,4 @@
+Xpush (SimdByte I LW4 LC4) [1,2,3,4]
+Push LW4 1
+Xshr (SimdByte I LW4 LC4)
+Pop
