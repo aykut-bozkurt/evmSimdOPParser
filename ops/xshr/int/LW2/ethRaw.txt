@@ -1,4 +1,4 @@
 Push LW2 15
-Push LW2 15
+Push LW2 1
 Shr
 Pop

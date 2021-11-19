@@ -1,4 +1,4 @@
 Push LW4 15
-Push LW4 15
+Push LW4 1
 Shl
 Pop
