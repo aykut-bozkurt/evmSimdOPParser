@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a ops=("xadd" "xsub" "xmul" "xdiv" "xmod" "xand" "xoor" "xxor" "xnot" "xshl" "xshr" "xeq" "xiszero" "xlt" "xgt")
+declare -a ops=("xadd" "xsub" "xmul" "xdiv" "xmod" "xand" "xoor" "xxor" "xnot" "xshl" "xshr" "xeq" "xiszero" "xlt" "xgt" "xpush")
 
 lcs[0]=32
 lcs[1]=16
